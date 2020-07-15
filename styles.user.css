@@ -1,0 +1,50 @@
+/* ==UserStyle==
+@name YouTube Time Saver 🕒
+@namespace https://github.com/ivanaugustobd/youtube-time-saver
+@homepageURL https://github.com/ivanaugustobd/youtube-time-saver
+@version 1.0.0
+@updateURL https://raw.githubusercontent.com/ivanaugustobd/youtube-time-saver/master/styles.user.css
+@description Small CSS set to save you A LOT of time on YouTube 📺
+@author ivanaugustobd
+@license MIT
+
+@preprocessor stylus
+
+@var checkbox comments "Hide comments" 1
+@var checkbox home-videos "Hide videos in home" 1
+@var checkbox side-videos "Hide right sidebar" 1
+@var checkbox subscriptions-in-menu "Hide subscriptions in menu" 1
+@var checkbox videowall "Hide videowall" 1
+
+==/UserStyle== */
+
+@-moz-document domain("youtube.com")
+  if comments {
+    .ytd-comments {
+      display: none !important;
+    }
+  }
+
+  if home-videos {
+    ytd-browse[page-subtype="home"] {
+      display: none !important;
+    }
+  }
+
+  if side-videos {
+    #secondary {
+      display: none !important;
+    }
+  }
+
+  if subscriptions-in-menu {
+    #sections > ytd-guide-section-renderer:nth-of-type(2) {
+      display: none !important;
+    }
+  }
+
+  if videowall {
+    .videowall-endscreen {
+      display: none !important;
+    }
+  }
