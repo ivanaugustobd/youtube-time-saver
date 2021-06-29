@@ -2,7 +2,7 @@
 @name YouTube Time Saver 🕒
 @namespace https://github.com/ivanaugustobd/youtube-time-saver
 @homepageURL https://github.com/ivanaugustobd/youtube-time-saver
-@version 1.0.0
+@version 1.3.0
 @updateURL https://raw.githubusercontent.com/ivanaugustobd/youtube-time-saver/master/styles.user.css
 @description Small CSS set to save you A LOT of time on YouTube 📺
 @author ivanaugustobd
@@ -15,6 +15,7 @@
 @var checkbox side-videos "Hide right sidebar" 1
 @var checkbox subscriptions-in-menu "Hide subscriptions in menu" 1
 @var checkbox videowall "Hide videowall" 1
+@var checkbox subscriptions-as-text "Subscriptions page as text" 1
 
 ==/UserStyle== */
 
@@ -47,4 +48,20 @@
     .videowall-endscreen {
       display: none !important;
     }
+  }
+
+  if subscriptions-as-text {
+      ytd-section-list-renderer[page-subtype="subscriptions"] {
+          #items.ytd-grid-renderer {
+              display: block;
+
+              & > ytd-grid-video-renderer.ytd-grid-renderer {
+                  width: 100%;
+
+                  ytd-thumbnail {
+                      display: none;
+                  }
+              }
+          }
+      }
   }
