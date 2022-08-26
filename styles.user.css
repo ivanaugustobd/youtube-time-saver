@@ -2,7 +2,7 @@
 @name YouTube Time Saver 🕒
 @namespace https://github.com/ivanaugustobd/youtube-time-saver
 @homepageURL https://github.com/ivanaugustobd/youtube-time-saver
-@version 1.5.0
+@version 1.5.1
 @updateURL https://raw.githubusercontent.com/ivanaugustobd/youtube-time-saver/master/styles.user.css
 @description Small CSS set to save you A LOT of time on YouTube 📺
 @author ivanaugustobd
@@ -12,7 +12,7 @@
 
 @var checkbox comments "Hide comments" 1
 @var checkbox home-videos "Hide videos in home" 1
-@var checkbox fact-checking "Hide fAcT cHeCkInG" 1
+@var checkbox political-banners "Hide political banners" 1
 @var checkbox side-videos "Hide right sidebar" 1
 @var checkbox slim-shorts "Slim shorts" 1
 @var checkbox subscriptions-as-text "Subscriptions page as text" 1
@@ -22,14 +22,17 @@
 ==/UserStyle== */
 
 @-moz-document domain("youtube.com")
+  #cinematics { display: none !important; }
+
   if comments {
     .ytd-comments {
       display: none !important;
     }
   }
-  
-  if fact-checking {
-      #contents > ytd-info-panel-container-renderer:first-child {
+
+  if political-banners {
+      #contents > ytd-info-panel-container-renderer:first-child,
+      #clarify-box {
           display: none !important;
       }
   }
