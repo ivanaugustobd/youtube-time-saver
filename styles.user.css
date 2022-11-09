@@ -2,7 +2,7 @@
 @name YouTube Time Saver 🕒
 @namespace https://github.com/ivanaugustobd/youtube-time-saver
 @homepageURL https://github.com/ivanaugustobd/youtube-time-saver
-@version 1.5.1
+@version 1.5.2
 @updateURL https://raw.githubusercontent.com/ivanaugustobd/youtube-time-saver/master/styles.user.css
 @description Small CSS set to save you A LOT of time on YouTube 📺
 @author ivanaugustobd
@@ -10,14 +10,14 @@
 
 @preprocessor stylus
 
-@var checkbox comments "Hide comments" 1
 @var checkbox home-videos "Hide videos in home" 1
-@var checkbox political-banners "Hide political banners" 1
+@var checkbox comments "Hide comments" 1
 @var checkbox side-videos "Hide right sidebar" 1
-@var checkbox slim-shorts "Slim shorts" 1
-@var checkbox subscriptions-as-text "Subscriptions page as text" 1
-@var checkbox subscriptions-in-menu "Hide subscriptions in menu" 1
 @var checkbox videowall "Hide videowall" 1
+@var checkbox slim-shorts "Hide shorts" 1
+@var checkbox subscriptions-in-menu "Hide subscriptions in sidemenu" 1
+@var checkbox political-banners "Hide political brainwash" 1
+@var checkbox subscriptions-as-text "Subscriptions as text-only list" 1
 
 ==/UserStyle== */
 
@@ -79,8 +79,8 @@
 
   if slim-shorts {
     #navigation-button-down.navigation-button.style-scope.ytd-shorts,
-    #shorts-inner-container > ytd-reel-video-renderer:not(:first-child),
-    #guide-wrapper #items > :nth-child(3) {
+    #shorts-inner-container > ytd-reel-video-renderer:not(:first-of-type),
+    #guide-wrapper #items > :nth-child(2) {
       display: none !important;
     }
   }
