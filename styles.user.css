@@ -2,7 +2,7 @@
 @name YouTube Time Saver 🕒
 @namespace https://github.com/ivanaugustobd/youtube-time-saver
 @homepageURL https://github.com/ivanaugustobd/youtube-time-saver
-@version 1.5.2
+@version 1.6.0
 @updateURL https://raw.githubusercontent.com/ivanaugustobd/youtube-time-saver/master/styles.user.css
 @description Small CSS set to save you A LOT of time on YouTube 📺
 @author ivanaugustobd
@@ -11,18 +11,25 @@
 @preprocessor stylus
 
 @var checkbox home-videos "Hide videos in home" 1
-@var checkbox comments "Hide comments" 1
 @var checkbox side-videos "Hide right sidebar" 1
+@var checkbox gourmet-lies 'Hide gourmet lies (self proclaimed "fact checking")' 1
+@var checkbox description "Hide video description" 1
+@var checkbox comments "Hide comments" 1
 @var checkbox videowall "Hide videowall" 1
-@var checkbox slim-shorts "Hide shorts" 1
-@var checkbox subscriptions-in-menu "Hide subscriptions in sidemenu" 1
-@var checkbox political-banners "Hide political brainwash" 1
+@var checkbox sidebar-subscriptions "Hide subscriptions in sidemenu" 1
 @var checkbox subscriptions-as-text "Subscriptions as text-only list" 1
+@var checkbox shorts "Hide shorts" 1
 
 ==/UserStyle== */
 
 @-moz-document domain("youtube.com")
-  #cinematics { display: none !important; }
+  html > body {
+    overflow-y: auto
+  }
+
+  #cinematics {
+    display: none !important
+  }
 
   if comments {
     .ytd-comments {
@@ -30,7 +37,13 @@
     }
   }
 
-  if political-banners {
+  if description {
+    #bottom-row {
+      display: none !important;
+    }
+  }
+
+  if gourmet-lies {
       #contents > ytd-info-panel-container-renderer:first-child,
       #clarify-box {
           display: none !important;
@@ -49,7 +62,7 @@
     }
   }
 
-  if subscriptions-in-menu {
+  if sidebar-subscriptions {
     #sections > ytd-guide-section-renderer:nth-of-type(2) {
       display: none !important;
     }
@@ -62,25 +75,43 @@
   }
 
   if subscriptions-as-text {
-      ytd-section-list-renderer[page-subtype="subscriptions"] {
-          #items.ytd-grid-renderer {
-              display: block;
-
-              & > ytd-grid-video-renderer.ytd-grid-renderer {
-                  width: 100%;
-
-                  ytd-thumbnail {
-                      display: none;
-                  }
-              }
-          }
+    ytd-browse[page-subtype="subscriptions"] {
+      #content,
+      #contents {
+        display: block !important;
+        height: auto !important;
       }
+
+      #thumbnail,
+      #thumbnail-underlay,
+      #avatar-link {
+        display: none !important;
+      }
+
+      ytd-rich-grid-media {
+        max-width: none;
+      }
+
+      ytd-rich-item-renderer {
+        display: block !important;
+        margin: 0;
+        width: 100%;
+        border-bottom: 1px solid var(--yt-spec-10-percent-layer);
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+
+        h3.ytd-rich-grid-media {
+          margin-top: 0;
+        }
+      }
+    }
   }
 
-  if slim-shorts {
+  if shorts {
     #navigation-button-down.navigation-button.style-scope.ytd-shorts,
     #shorts-inner-container > ytd-reel-video-renderer:not(:first-of-type),
-    #guide-wrapper #items > :nth-child(2) {
+    #guide-wrapper #items > :nth-child(2),
+    #contents > ytd-rich-section-renderer {
       display: none !important;
     }
   }
